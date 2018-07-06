@@ -2,18 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: rtorok
- * Date: 6/20/18
- * Time: 3:19 PM
+ * Date: 7/5/18
+ * Time: 9:18 PM
  */
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$id = (is_numeric($_POST['id']) ? (int)$_POST['id'] : 0);
+$id = parseInt($_POST['id']);
 $username = $_POST['username'];
 $password = $_POST['password'];
-$old = $_POST['old'];
-$salt = $_POST['salt'];
+$classId = parseInt($_POST['classId']);
+$classItemId = parseInt($_POST['classItemId']);
+$title = $_POST['title'];
+$text = $_POST['text'];
+$visibility = parseInt($_POST['visibility']);
+$type = $_POST['type'];
+$parent = $_POST['parent'];
 
 //create connection
 $servername = "localhost:3306";
@@ -27,6 +32,7 @@ $stmt = $connection->prepare("SELECT password FROM users WHERE username = ? AND 
 $stmt->bind_param("si", $username, $id);
 $stmt->execute();
 
+
 $allResults = $stmt->get_result();
 $atleastone = false;
 while($result = $allResults->fetch_row()) {
@@ -35,18 +41,14 @@ while($result = $allResults->fetch_row()) {
     $encryptedPassword = $result[0]; //password
     $match = password_verify($old, $encryptedPassword);
     if ($match) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
-        // prepare database update
-        $stmt = $connection->prepare("UPDATE users SET password = ?, salt = ? WHERE id = ?");
-        $stmt->bind_param("ssi", $hash, $salt, $id);
+        //add post to database
+        $stmt = $connection->prepare("INSERT INTO posts VALUE (null, ?, ?, ?, ?, ?, ?, ?, ?, null, null)");
+        $stmt->bind_param('iiissisi', $classId,$classItemId, $id, $title, $text, $visibility, $type, $parent);
         $stmt->execute();
         $error = $connection->error;
-        if (strlen($error) > 0) {
-            echo $error;
-        } else {
+        if (strlen($error) == 0)
             echo "done";
-        }
+        else echo $error;
     }
 }
 
@@ -54,3 +56,12 @@ if (!$atleastone) { //since the id is a primary key, there should only be 0 or 1
     echo "invalid input";
 }
 
+function escape($string) {
+    $string = str_replace(";", "\\;", $string);
+    $string = str_replace("\\", "\\\\", $string);
+    return $string;
+}
+
+function parseInt($string) {
+    return is_numeric($string) ? (int) $string : 0;
+}

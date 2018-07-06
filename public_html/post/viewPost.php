@@ -2,18 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: rtorok
- * Date: 6/20/18
- * Time: 3:19 PM
+ * Date: 7/5/18
+ * Time: 9:52 PM
  */
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$id = (is_numeric($_POST['id']) ? (int)$_POST['id'] : 0);
+$id = parseInt($_POST['id']);
 $username = $_POST['username'];
 $password = $_POST['password'];
-$old = $_POST['old'];
-$salt = $_POST['salt'];
+$postId = $_POST['postId'];
 
 //create connection
 $servername = "localhost:3306";
@@ -27,6 +26,7 @@ $stmt = $connection->prepare("SELECT password FROM users WHERE username = ? AND 
 $stmt->bind_param("si", $username, $id);
 $stmt->execute();
 
+
 $allResults = $stmt->get_result();
 $atleastone = false;
 while($result = $allResults->fetch_row()) {
@@ -35,18 +35,13 @@ while($result = $allResults->fetch_row()) {
     $encryptedPassword = $result[0]; //password
     $match = password_verify($old, $encryptedPassword);
     if ($match) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
-        // prepare database update
-        $stmt = $connection->prepare("UPDATE users SET password = ?, salt = ? WHERE id = ?");
-        $stmt->bind_param("ssi", $hash, $salt, $id);
+        $stmt = $connection->prepare("INSERT INTO views VALUE (?, ?)");
+        $stmt->bind_param("ii", $id, $postId);
         $stmt->execute();
         $error = $connection->error;
-        if (strlen($error) > 0) {
-            echo $error;
-        } else {
+        if (strlen($error) == 0)
             echo "done";
-        }
+        else echo $error;
     }
 }
 
