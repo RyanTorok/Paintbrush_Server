@@ -79,13 +79,32 @@ while($result = $allResults->fetch_row()) {
                 $stmt->execute();
                 $numLikes = $stmt->get_result()->fetch_row()[0];
 
+                $first = "Anonymous";
+                $last = "";
+                $posterUN = "Anonymous";
+
+                $notAnonymous = $row[7] == "true";
+                if ($notAnonymous) {
+                    $userId = (is_numeric($row[3]) ? (int) $row[3] : 0);
+                    $stmt = $connection-> prepare("SELECT `first`, `last`, username FROM users WHERE id = ?");
+                    $stmt->bind_param("i", $userId);
+                    $stmt->execute();
+                    $posterData = $stmt->get_result();
+                    $posterRow = $posterData->fetch_row();
+                    $first = $row[0];
+                    $last = $row[1];
+                    $posterUN = $row[2];
+                }
+
                 //encode post
-                $postLiteral =
-                    escape($row[0]) . ";" . escape($row[1]) . ";" . escape($row[2]) . ";" .
-                    escape($row[3]) . ";" . escape($row[4]). ";" . escape($row[5]). ";" .
-                    escape($row[6]). ";" .  escape($row[7]). ";" . escape($row[8]). ";" .
-                    escape($row[9]). ";" . escape($row[10]) . ";" . $likedThis ? 1 : 0 . ";" . $numLikes . ";" . $viewedThis ? 1 : 0 . ";" . $numViews;
-                    echo base64_encode($postLiteral . "\n");
+                //not all of these really needed to be escaped, but it's better to be safe
+                $postLiteral = escape($row[0]) . ";" . escape($row[1]) . ";" . escape($row[2]) . ";" .
+                    escape($row[3]) . ";" . escape($row[4]) . ";" . escape($row[5]) . ";" . escape($row[6]) . ";" .
+                    escape($row[7]) . ";" . escape($row[8]) . ";" . escape($row[9]) . ";" . escape($row[10]) . ";" .
+                    escape($row[11]) . ";" . escape($numLikes) . ";" . escape($likedThis) . ";" . escape($numViews) . ";" .
+                    escape($viewedThis) . ";" . escape($first) . ";" . escape($last) . ";" . escape($posterUN);
+
+                echo base64_encode($postLiteral . "\n");
             }
         }
 
