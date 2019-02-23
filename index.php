@@ -2,13 +2,15 @@
 ?>
 
 <html>
-  <head>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <title>The Paintbrush Project</title>
-      <link rel="stylesheet" href="index.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-      <script type="text/javascript" src="index.js"></script>
-  </head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
   <body>
     <div id="titleBarWrapper">
         <div id="titleBar" class="asRow">
@@ -56,6 +58,19 @@
                 <input class="createAcctOnly" id="schoolCodeField" type="text" name="schoolCode"><br>
                 <p id="loginInvalidMessage">&nbsp;</p>
                 <p id="submitLogin" class="barMenu">Submit</p>
+            </form>
+        </div>
+
+        <div id = 'osList'>
+            <form id = pickOSRadios>
+                <label for="winR">Microsoft Windows (.exe)</label>
+                <input id="winR" type="radio" name="os" value="win"><br>
+                <label for="macR">Mac OS X (.app)</label>
+                <input id="macR" type="radio" name="os" value="mac"><br>
+                <label for="linuxtarR">Debian/Ubuntu Linux (.tar.gz) </label>
+                <input id="linuxtarR" type="radio" name="os" value="tar"><br>
+                <label for="linuxrpmR">Red Hat/Fedora Linux (.rpm) </label>
+                <input id="linuxrpmR" type="radio" name="os" value="rpm"><br>
             </form>
         </div>
     </div>
