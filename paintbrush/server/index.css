@@ -1,0 +1,178 @@
+@font-face {font-family: Comfortaa;src:url(./Comfortaa-Regular.ttf);}
+
+body {
+    margin-bottom: -.05em;
+}
+
+#titleBar {
+    background: black;
+    margin-top: -3em;
+    margin-left: -.5em;
+    margin-right: -.5em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+}
+
+#title {
+    color: white;
+    margin-left: .4em;
+    font-size: 36pt;
+    font-family: Comfortaa, sans-serif;
+    font-style: normal;
+}
+
+#subtitle {
+    color: white;
+    padding-left: 1.25em;
+    margin-top: -2.25em;
+    margin-bottom: .5em;
+    font-size: 14pt;
+    font-style: italic;
+    font-family: sans-serif;
+}
+
+.asRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#barMenus {
+    margin-top: 3.5em;
+    margin-left: 10em;
+}
+
+#loginButtons {
+    margin-top: 3.5em;
+    margin-left: 23em;
+}
+
+.barMenu {
+    color: white;
+    font-family: sans-serif;
+    font-size: 13pt;
+    padding-right: 3em;
+    cursor: pointer;
+}
+
+#downloadButton {
+    margin-top: 3.5em;
+    background: #663366;
+    width: 10em;
+    margin-left: 2em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+#downloadArrow {
+    background: transparent;
+    margin-top: 3.5em;
+    margin-left: -2.25em;
+    width: 2em;
+    height: 3.2em;
+    border-left: 0.1em solid lightgray;
+    cursor: pointer;
+}
+
+#downloadButton:hover {
+}
+
+#downloadText {
+    color: white;
+    font-family: sans-serif;
+    margin-left: 2em;
+}
+
+.barMenu:hover {
+    text-decoration: underline;
+}
+
+.loginButton {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#titleBarBorder {
+    background: #663366;
+    margin-left: -.5em;
+    margin-right: -.5em;
+    height: .5em;
+}
+
+.brighterTitleBarBorder {
+    background: #884488;
+}
+
+#scrollBar {
+    background: #885588;
+    margin-right: -.5em;
+    height: .5em;
+    width: 3.5em;
+    left: 30em;
+    position: absolute;
+}
+
+#mainBody {
+    height: 88.5%;
+    margin-left: -.5em;
+    margin-right: -.5em;
+    background-image: url("background.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+#loginBlock {
+    background: black;
+    padding: 1em;
+    margin-left: 90em;
+    width: 16em;
+    border-radius: 0 0 1em 1em;
+}
+
+#submitLogin {
+    margin-left: 5em;
+    color: white;
+}
+
+#loginInvalidMessage {
+    font-family: sans-serif;
+    color: transparent;
+}
+
+#loginForm > input {
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+#loginForm > label {
+    font-family: sans-serif;
+    color: white;
+}
+
+#downloadArrowText {
+    color: white;
+    margin-left: .6em;
+}
+
+.italic {
+    font-style: italic;
+}
+
+#osList {
+    background:black;
+    padding: 1em;
+    width: 18em;
+    float: right;
+    border-radius: 0 0 0 1em;
+
+}
+
+#osList input {
+    float: right;
+}
+
+#osList label {
+    color: white;
+    font-family: sans-serif;
+}
+

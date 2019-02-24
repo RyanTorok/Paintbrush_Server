@@ -102,6 +102,13 @@ $(document).ready(function () {
     });
 
 
+    $("#elLogo").hover(function () {
+    	$(this).attr("src", "el_purple.gif");
+    }, function() {
+    	$(this).attr("src", "el_logo.gif");
+    });
+
+
     $("#downloadArrow").click(function () {
         if (loginState === 1) {
             $("#login").click();

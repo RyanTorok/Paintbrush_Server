@@ -15,10 +15,22 @@ body {
 
 #title {
     color: white;
+    display: inline-block;
     margin-left: .4em;
     font-size: 36pt;
     font-family: Comfortaa, sans-serif;
     font-style: normal;
+    margin-right: 0;
+}
+
+.titles {
+    color: #bd64d6;
+    display: inline-block;
+    margin-left: .4em;
+    font-size: 36pt;
+    font-family: Comfortaa, sans-serif;
+    font-style: normal;
+    margin-left: 0;
 }
 
 #subtitle {
@@ -35,6 +47,16 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+}
+
+#elLogo {
+	width: 4em;
+	margin-top:2em;
+	border:0;
+}
+
+#elLink {
+	margin-left: 45em;
 }
 
 #barMenus {
