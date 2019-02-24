@@ -46,8 +46,20 @@ $(document).ready(function () {
         }
     });
 
+
+    let scrollIndex = 0;
+
     $(".barMenu:not(.loginButton):not(#submitLogin)").click(function () {
         const me = $(this);
+        let index = $(this).index();
+        if (index === scrollIndex)
+            return;
+        scrollIndex = index;
+        $("#mainBody").fadeOut("slow", function () {
+            $("#mainBody").fadeIn("slow");
+            let newImg = index === 0 ? "background.jpeg" : index === 1 ? "Day_Sunny.png" : index === 2 ? "Day_Cloudy.png" : "Night_Clear.png";
+            $("#mainBody").css("background-image", "url(\"" + newImg + "\"");
+        });
         $( "#scrollBar" ).animate({
             left: me.offset().left,
             width: me.width()
