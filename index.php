@@ -12,6 +12,7 @@
     <script type="text/javascript" src="index.js"></script>
 </head>
   <body>
+    <div id="background">
     <div id="titleBarWrapper">
         <div id="titleBar" class="asRow">
             <div>
@@ -32,6 +33,7 @@
         </div>
     </div>
     <div id="mainBody">
+    </div>
     </div>
   </body>
 </html>
