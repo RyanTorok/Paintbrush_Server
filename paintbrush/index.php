@@ -12,6 +12,7 @@
     <script type="text/javascript" src="index.js"></script>
 </head>
   <body>
+    <div id="background">
     <div id="titleBarWrapper">
         <div id="titleBar" class="asRow">
             <div>
@@ -73,6 +74,7 @@
                 <input id="linuxrpmR" type="radio" name="os" value="rpm"><br>
             </form>
         </div>
+    </div>
     </div>
   </body>
 </html>

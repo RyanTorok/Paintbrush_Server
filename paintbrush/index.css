@@ -1,14 +1,26 @@
 @font-face {font-family: Comfortaa;src:url(./Comfortaa-Regular.ttf);}
 
 body {
-    margin-bottom: -.05em;
+    margin: 0;
+}
+
+#background {
+    background: #303030;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    right:0;
+    left: 0;
+    top: 0;
+    bottom: 0;
 }
 
 #titleBar {
     background: black;
     margin-top: -3em;
-    margin-left: -.5em;
-    margin-right: -.5em;
+    margin-left: 0;
+    margin-right: 0;
     padding-top: .25em;
     padding-bottom: .25em;
 }
@@ -94,8 +106,8 @@ body {
 
 #titleBarBorder {
     background: #663366;
-    margin-left: -.5em;
-    margin-right: -.5em;
+    margin-left: 0;
+    margin-right: 0;
     height: .5em;
 }
 
@@ -105,7 +117,7 @@ body {
 
 #scrollBar {
     background: #885588;
-    margin-right: -.5em;
+    margin-right: 0;
     height: .5em;
     width: 3.5em;
     left: 30em;
@@ -113,9 +125,9 @@ body {
 }
 
 #mainBody {
-    height: 88.5%;
-    margin-left: -.5em;
-    margin-right: -.5em;
+    height: 88.6%;
+    margin-left: 0;
+    margin-right: 0;
     background-image: url("background.jpeg");
     background-size: cover;
     background-position: center;
