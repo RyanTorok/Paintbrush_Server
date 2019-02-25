@@ -115,9 +115,9 @@ $(document).ready(function () {
 
 
     $("#elLogo").hover(function () {
-    	$(this).attr("src", "el_purple.gif");
+    	$(this).attr("src", "el_highlighted.png");
     }, function() {
-    	$(this).attr("src", "el_logo.gif");
+    	$(this).attr("src", "el_logo.png");
     });
 
 
